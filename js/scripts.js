@@ -29,18 +29,13 @@ function resetFields() {
   $("input.new-state").val("");
 }
 
-// function clearFields(that) {
-//   if (!($(that).find("input.new-street").val())) {
-//     that.remove();
-//   }
-// }
 function addAddressFields() {
   $("#new-addresses").append('<div class="new-address">' +
                                '<div class="form-group">' + '<label for="addresstype">' + 'Address type' + '</label>' +
                                '<select class="form-control" id="addresstype">' +
                                '<option>Home</option>' +
                                '<option>Work</option>' +
-                               '<option>Vacation address</option>' +
+                               '<option>Vacation</option>' +
                              '</select>' +
                                  '<label for="new-street">Street</label>' +
                                  '<input type="text" class="form-control new-street">' +
@@ -82,7 +77,7 @@ $(document).ready(function() {
     });
 
     $(".contact").last().click(function() {
-      $("#show-contact").show();
+      $("#show-contact").hide();
       $("#show-contact h2").text(newContact.firstName);
       $(".first-name").text(newContact.firstName);
       $(".last-name").text(newContact.lastName);
@@ -90,6 +85,7 @@ $(document).ready(function() {
       newContact.addresses.forEach(function(address) {
         $("ul#addresses").append("<li>" + address.fullAddress() + "</li>");
       });
+      $("#show-contact").fadeIn();
     });
     addAddressFields();
     resetFields();
