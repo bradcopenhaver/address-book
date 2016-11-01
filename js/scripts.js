@@ -76,8 +76,9 @@ $(document).ready(function() {
       this.remove();
     });
 
-    $(".contact").last().click(function() {
-      $("#show-contact").hide();
+    $(".contact").last().hover(
+
+      function() {
       $("#show-contact h2").text(newContact.firstName);
       $(".first-name").text(newContact.firstName);
       $(".last-name").text(newContact.lastName);
@@ -86,6 +87,9 @@ $(document).ready(function() {
         $("ul#addresses").append("<li>" + address.fullAddress() + "</li>");
       });
       $("#show-contact").fadeIn();
+    },
+    function(){
+    $("#show-contact").fadeOut();
     });
     addAddressFields();
     resetFields();
